@@ -13,6 +13,9 @@ src/**/*.js
 
 # dependencies
 node_modules
+dist
+*.exe
+
 
 # IDEs and editors
 .idea

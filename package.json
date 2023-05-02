@@ -1,6 +1,6 @@
 {
   "name": "angular-electron",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Angular 15 with Electron 22 (Typescript + SASS + Hot Reload)",
   "homepage": "",
   "author": {
@@ -21,6 +21,31 @@
     "linux"
   ],
   "main": "app/main.js",
+  "build": {
+    "productName": "angular-electron",
+    "appId": "com.ibtissam.angular-electron",
+    "files": [
+      "dist/**/*",
+      "package.json",
+      "app/main.js"
+    ],
+    "directories": {
+      "output": "exebuild"
+    },
+    "win": {
+      "target": [
+        "nsis"
+      ],
+      "publish": [
+        {
+          "provider": "github",
+          "owner": "ibtissamOlearn",
+          "repo": "https://github.com/ibtissamOlearn/testmiseajour.git",
+          "token": "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"
+        }
+      ]
+    }
+  },
   "private": true,
   "scripts": {
     "postinstall": "electron-builder install-app-deps",
@@ -41,7 +66,8 @@
     "e2e": "npm run build:prod && playwright test -c e2e/playwright.config.ts e2e/",
     "e2e:show-trace": "playwright show-trace e2e/tracing/trace.zip",
     "version": "conventional-changelog -i CHANGELOG.md -s -r 0 && git add CHANGELOG.md",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "package": "electron-builder"
   },
   "dependencies": {
     "@angular/common": "15.1.5",
@@ -52,6 +78,8 @@
     "@angular/platform-browser": "15.1.5",
     "@angular/platform-browser-dynamic": "15.1.5",
     "@angular/router": "15.1.5",
+    "electron-log": "4.4.8",
+    "electron-updater": "5.3.0",
     "rxjs": "7.8.0",
     "tslib": "^2.5.0",
     "zone.js": "~0.12.0"
